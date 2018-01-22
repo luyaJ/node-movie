@@ -1,0 +1,31 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "myblog",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "luyaj",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "config-lite": "^2.1.0",
+    "connect": "^3.6.5",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-mongo": "^0.3.0",
+    "express-session": "^1.15.6",
+    "markdown": "^0.5.0",
+    "moment": "^2.20.1",
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.0.1",
+    "serve-favicon": "^2.4.5",
+    "session": "^0.1.0"
+  }
+}
