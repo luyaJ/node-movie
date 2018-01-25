@@ -18,6 +18,7 @@
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
     "ejs": "^2.5.7",
+    "ejs-lint": "^0.3.0",
     "express": "^4.16.2",
     "express-mongo": "^0.3.0",
     "express-session": "^1.15.6",

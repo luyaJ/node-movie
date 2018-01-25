@@ -1,9 +1,12 @@
+<%- include('components/nav') %>
 <%- include header %>
 
 <div class="ui grid">
-  <div class="four wide column"></div>
+  <div class="four wide column">
+  </div>
   <div class="eight wide column">
-    <form id="regForm" class="ui form segment" method="post">
+  <%- message %>    
+    <form id="registerForm" class="ui form segment" method="post" onsubmit="return false">
       <div class="field required">
         <label>用户名</label>
         <input placeholder="用户名" type="text" name="name">
@@ -17,6 +20,8 @@
         <input placeholder="再输一次密码" type="password" name="repassword">
       </div>
       <input type="submit" class="ui button fluid" value="注册">
+      <div class="ui horizontal divider">Or </div>
+      <p>已有账号？<a href="/login" class="switch">马上登录</a></p>
     </form>
   </div>
 </div>

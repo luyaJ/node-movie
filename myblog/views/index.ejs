@@ -1,0 +1,20 @@
+<%- include('components/nav') %>
+<%- include header %>
+
+<div class="ui grid">
+  <div class="four wide column">
+  </div>
+  <div class="eight wide column">
+     <h1>Your name: <%- user.name %></h1>
+    <% if(user.isAdmin) { %>
+    <p>欢迎，管理员！</p>
+    <a href="/admin">进入后台管理</a>
+    <% } else { %>
+
+    <p>欢迎来到luyaj's blog</p>
+    <p><a href="/logout">我要注销 </a></p>
+    <% } %>
+  </div>
+</div>
+
+<%- include footer %>

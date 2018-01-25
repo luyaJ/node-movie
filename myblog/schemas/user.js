@@ -7,7 +7,15 @@ const UserSchema = new Schema({
     unique: true,
     type: String 
   },                    
-  password: { type: String },                        
+  password: { type: String }, 
+  // role:{
+  //   type: Number,
+  //   default: 0
+  // }, 
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },                  
   meta: {
     createAt: {
       type: Date,
