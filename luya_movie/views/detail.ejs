@@ -1,0 +1,39 @@
+<%- include('header')%>
+
+<div class="ui grid">
+  <div class="eight wide column">
+    <div class="ui embed" data-url="<%= movie.flash %>" data-placeholder="<%= movie.poster %>"></div>
+  </div>
+  <div class="five wide column">
+    <table class="ui table">
+      <tbody>
+        <tr>
+          <td><h4>电影名字</h4></td>
+          <td><h4><%= movie.title %></h4></td>
+        </tr>
+        <tr>
+          <td><h4>导演</h4></td>
+          <td><h4><%= movie.doctor %></h4></td>
+        </tr>
+        <tr>
+          <td><h4>国家</h4></td>
+          <td><h4><%= movie.country %></h4></td>
+        </tr>
+        <tr>
+          <td><h4>语言</h4></td>
+          <td><h4><%= movie.language %></h4></td>
+        </tr>
+        <tr>
+          <td><h4>上映年份</h4></td>
+          <td><h4><%= movie.year %></h4></td>
+        </tr>
+        <tr>
+          <td><h4>简介</h4></td>
+          <td><h4><%= movie.summary %></h4></td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+</div>
+
+<%- include('footer')%>

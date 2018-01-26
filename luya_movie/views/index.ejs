@@ -1,0 +1,27 @@
+<%- include header %>
+
+<div class="ui special cards">
+<% movies.forEach(function(item){ %>
+  <div class="card">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <a href="/movie/<%= item._id %>" class="ui inverted button">观看影片</a>
+          </div>
+        </div>
+      </div>
+      <img src="<%= item.poster %>">
+    </div>
+    <div class="content">
+      <a class="header" href="/movie/<%= item._id %>"><%= item.title %></a>
+      <div class="meta">
+        <span class="date"><%= item.doctor %></span>
+      </div>
+    </div>
+    <a href="/movie/<%= item._id %>" class="ui bottom attached button">观看影片</a>
+  </div>
+<% }) %>
+</div>
+
+<%- include footer %>

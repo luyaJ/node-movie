@@ -1,0 +1,46 @@
+<%- include('header')%>
+
+<div class="ui grid">
+  <div class="two wide column">
+  </div>
+  <div class="ten wide column">
+    <form class="ui form segment" method="post" action="/admin/movie/new">
+      <div class="field">
+        <label>电影名字</label>
+        <input placeholder="电影名字" type="text" name="movie[title]" value="<%= movie.title%>">
+      </div>
+      <div class="field">
+        <label>电影导演</label>
+        <input placeholder="电影导演" type="text" name="movie[doctor]" value="<%= movie.doctor%>">
+      </div>
+      <div class="field">
+        <label>国家</label>
+        <input placeholder="国家" type="text" name="movie[country]" value="<%= movie.country%>">
+      </div>
+      <div class="field">
+        <label>语种</label>
+        <input placeholder="语种" type="text" name="movie[language]" value="<%= movie.language%>">
+      </div>
+      <div class="field">
+        <label>海报地址</label>
+        <input placeholder="海报地址" type="text" name="movie[poster]" value="<%= movie.poster%>">
+      </div>
+      <div class="field">
+        <label>片源地址</label>
+        <input placeholder="片源地址" type="text" name="movie[flash]" value="<%= movie.flash%>">
+      </div>
+      <div class="field">
+        <label>上映年份</label>
+        <input placeholder="上映年份" type="text" name="movie[year]" value="<%= movie.year%>">
+      </div>
+      <div class="field">
+        <label>电影简介</label>
+        <input placeholder="电影简介" type="text" name="movie[summary]" value="<%= movie.summary%>">
+      </div>
+      
+      <input type="submit" class="ui red button fluid" value="录入"> 
+    </form>
+  </div>
+</div>
+
+<%- include('footer')%>
