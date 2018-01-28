@@ -83,7 +83,6 @@ exports.logout = function (req, res) {
   res.redirect('/');
 }
 
-
 // userlist
 exports.userList = function (req, res) {
   User.fetch(function (err, users) {
@@ -95,4 +94,24 @@ exports.userList = function (req, res) {
       users: users
     });
   });
+}
+
+// 设置管理员权限
+// midware for user (访问后台看用户信息需要先登录，再需要管理员身份)
+exports.loginRequired = function (req, res, next) {
+  let user = req.session.user;
+  // 用户未登录状态下，访问后台用户信息页，需要先登录
+  if(!user) {
+    return res.redirect('/login');
+  }
+  next();
+}
+
+exports.adminRequired = function (req, res, next) {
+  let user = req.session.user;
+  // 这里我设置 管理员：admin的role为99
+  if(user.role <= 10) {
+    return res.redirect('/login');
+  }
+  next();
 }
