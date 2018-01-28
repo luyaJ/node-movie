@@ -1,0 +1,27 @@
+<%- include header %>
+
+<div class="ui grid">
+  <div class="four wide column">
+  </div>
+  <div class="eight wide column">   
+    <form id="registerForm" class="ui form segment" method="post" action="/user/register">
+      <div class="field required">
+        <label>用户名</label>
+        <input placeholder="用户名" type="text" name="user[name]">
+      </div>
+      <div class="field required">
+        <label>密码</label>
+        <input placeholder="密码" type="password" name="user[password]">
+      </div>
+      <div class="field required">
+        <label>重复密码</label>
+        <input placeholder="再输一次密码" type="password" name="user[repassword]">
+      </div>
+      <input type="submit" class="ui button fluid" value="注册">
+      <div class="ui horizontal divider">Or </div>
+      <p>已有账号？<a href="/login" class="switch">马上登录</a></p>
+    </form>
+  </div>
+</div>
+
+<%- include footer %>

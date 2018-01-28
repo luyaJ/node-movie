@@ -10,7 +10,26 @@
     <script src="/js/common.js"></script>
   </head>
   <body>
-  	<h2><%= title %></h2>
-  
-    
-    
+    <div class="ui large menu">
+      <a class="active item" href="/">首页 </a>
+      <a class="item" href="#">Messages </a>
+      <div class="right menu">
+      <% if (locals.user) { %>
+        <div class="item">
+          <span>欢迎您，<%= user.name %></span>
+        </div>
+        <div class="item">
+          <a href="/logout">登出</a>
+        </div>
+      <% } else { %>
+        <div class="item">
+          <a href="/register">注册</a>
+        </div>
+        <div class="item">
+          <a href="/login">登录</a>
+        </div> 
+      <% } %>           
+      </div>
+    </div>
+
+    <h2><%= title %></h2>

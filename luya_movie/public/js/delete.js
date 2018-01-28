@@ -1,12 +1,12 @@
 $(function () {
-  $('button').click(function (e) {
+  $('#movieDel').click(function (e) {
     const target = $(e.target);
     const id = target.data('id');
     const tr = $('.item-id-' + id);
 
     $.ajax({
       type: 'DELETE',
-      url: '/admin/list?id=' + id
+      url: '/admin/movielist?id=' + id
     })
     .done(function (results) {
       if(results.success === 1) {
@@ -14,6 +14,6 @@ $(function () {
           tr.remove();
         }
       }
-    })
-  })
+    });
+  });
 });

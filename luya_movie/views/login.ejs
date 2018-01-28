@@ -1,0 +1,23 @@
+<%- include header %>
+
+<div class="ui grid">
+  <div class="four wide column">
+  </div>
+  <div class="eight wide column">
+    <form id="loginForm" class="ui form segment" method="post" action="/user/login">
+      <div class="field required">
+        <label>用户名</label>
+        <input placeholder="用户名" type="text" name="user[name]">
+      </div>
+      <div class="field required">
+        <label>密码</label>
+        <input placeholder="密码" type="password" name="user[password]">
+      </div>
+      <input type="submit" class="ui purple button fluid" value="登录"> 
+      <div class="ui horizontal divider">Or </div>
+      <p>还没注册？<a href="/register" class="switch">马上注册</a></p> 
+    </form>
+  </div>
+</div>
+
+<%- include footer %>
