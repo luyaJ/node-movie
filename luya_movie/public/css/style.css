@@ -2,3 +2,30 @@
 body{
   margin: 20px;
 }
+
+/* 评论 */
+.comments .avator{
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+}
+
+.comments .avator img{
+  height: 30px;
+  width: 30px;
+}
+
+.minimal.comments{
+  margin-top: 60px;
+}
+
+/* 电影面板 index.js */
+.movie_panel{
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(63, 61, 63);
+  padding: 10px;
+  background: #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+}

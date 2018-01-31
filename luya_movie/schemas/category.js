@@ -1,22 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.Types.ObjectId
+const ObjectId = Schema.Types.ObjectId;
 
-const MovieSchema = new Schema({
-  title: String,
-  doctor: String,
-  country: String, 
-  language: String,
-  poster: String,
-  flash: String,
-  vPic: String,
-  year: Number,
-  summary: String,
-  category: {
+const CategorySchema = new Schema({
+  name: String,
+  movies: [{
     type: ObjectId,
-    ref: 'Category'
-  },
-  // 创建及更新时间
+    ref: 'Movie'
+  }],
   meta: {
     createAt: {
       type: Date,
@@ -30,9 +21,9 @@ const MovieSchema = new Schema({
 });
 
 // 每次存储数据之前，我们都调用一下这个方法
-MovieSchema.pre('save', function(next){
+CategorySchema.pre('save', function (next) {
   // 如果是新加的
-  if(this.isNew) {
+  if (this.isNew) {
     this.meta.createAt = this.meta.updateAt = Date.now()
   } else {
     this.meta.updateAt = Date.now()
@@ -41,9 +32,9 @@ MovieSchema.pre('save', function(next){
 });
 
 // 查询静态方法
-MovieSchema.statics = {
+CategorySchema.statics = {
   // 用来取出当前数据库所有数据
-  fetch: function(cb){
+  fetch: function (cb) {
     return this
       .find()
       // 按更新时间排序
@@ -51,11 +42,13 @@ MovieSchema.statics = {
       .exec(cb);
   },
   // 查询当前数据
-  findById: function(id, cb){
+  findById: function (id, cb) {
     return this
-      .findOne({_id: id})
+      .findOne({
+        _id: id
+      })
       .exec(cb);
   }
 };
 
-module.exports = MovieSchema;
+module.exports = CategorySchema;

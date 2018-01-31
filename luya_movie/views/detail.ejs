@@ -2,9 +2,65 @@
 
 <div class="ui grid">
   <div class="eight wide column">
-    <div class="ui embed" data-url="<%= movie.flash %>" data-placeholder="<%= movie.poster %>"></div>
+    <div class="ui embed" data-url="<%= movie.flash %>" data-placeholder="<%= movie.vPic %>"></div>
+    <div class="ui minimal comments">
+      <h3 class="ui dividing header">评论区</h3>
+      <% comments.forEach(function(item){ %>
+      <div class="comment">
+        <a class="avatar">
+          <img src="http://www.semantic-ui.cn/images/avatar/small/elliot.jpg">
+        </a>
+        <div class="content">
+          <a class="author"><%= item.from.name %></a>
+          <div class="metadata">
+            <span class="date"><%= moment(item.meta.createAt).format('HH:mm:SS YYYY/MM/DD') %></span>
+          </div>
+          <div class="text">
+            <p><%= item.content %></p>
+          </div>
+          <div class="actions">
+            <a class="reply" href="#comments" data-cid="<%= item._id %>" data-tid="<%= item.from._id %>">回复</a>
+          </div>
+        </div>
+        <% if( (item.reply) && (item.reply.length > 0) ) { %>
+          <div class="comments">
+          <% item.reply.forEach(function(reply){ %>
+            <div class="comment">
+              <a class="avatar">
+                <img src="http://www.semantic-ui.cn/images/avatar/small/jenny.jpg">
+              </a>
+              <div class="content">
+                <a class="author"><%= reply.from.name %></a>
+                <div class="metadata">
+                  <span class="date"><%= moment(item.meta.createAt).format('HH:mm:SS YYYY/MM/DD') %></span>
+                </div>
+                <div class="text">
+                  <%= reply.content %>
+                </div>
+                <div class="actions">
+                  <a class="reply" href="#comments" data-cid="<%= item._id %>" data-tid="<%= item.from._id %>">回复</a>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+      <% } %> 
+        
+      </div>
+      <% }) %>
+          
+      <form class="ui reply form" id="comments" method="post" action="/user/comment">
+        <input type="hidden" name="comment[movie]" value="<%= movie._id %>">
+        <input type="hidden" name="comment[from]" value="<%= user._id %>">        
+        <div class="field">
+          <textarea placeholder="您可以进行评论哦~" name="comment[content]"></textarea>
+        </div>
+        <input type="submit" class="ui blue button" value="评论"> 
+      </form>
+    </div>
   </div>
-  <div class="five wide column">
+
+  <div class="six wide column">
     <table class="ui table">
       <tbody>
         <tr>
@@ -35,5 +91,5 @@
     </table>  
   </div>
 </div>
-
+<script src="/js/comment.js"></script>
 <%- include('footer')%>

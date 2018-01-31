@@ -4,43 +4,67 @@
   <div class="two wide column">
   </div>
   <div class="ten wide column">
-    <form class="ui form segment" method="post" action="/admin/movie">
+    <form class="ui form segment" method="post" action="/admin/movie"> 
+      <div class="field">
+        <label>豆瓣同步</label>
+        <input id="douban" type="text" placeholder="请输入豆瓣电影id">
+      </div>
+      <% if (movie._id) { %>
+      <input type="hidden" name="movie[_id]" value="<%= movie._id %>">
+      <% } %>    
+      <div class="field">
+        <label>电影分类</label>
+        <input placeholder="电影分类" type="text" name="movie[categoryName]" value="<%= movie.categoryName %>">
+      </div>
+      <div class="field">
+        <label>分类选择</label>
+      <% categories.forEach(function(cat){ %>
+        <% if(movie._id){ %>
+        <input type="radio" name="movie[category]" value="<%= cat._id %>" checked="cat._id.toString()==movie.category.toString()"><%= cat.name %>&nbsp;&nbsp;&nbsp;
+        <% } else { %>
+        <input type="radio" name="movie[category]" value="<%= cat._id %>"><%= cat.name %>&nbsp;&nbsp;&nbsp;
+        <% } %> 
+      <% }) %> 
+      </div>        
       <div class="field">
         <label>电影名字</label>
-        <input placeholder="电影名字" type="text" name="movie[title]" value="<%= movie.title%>">
+        <input id="inputTitle" placeholder="电影名字" type="text" name="movie[title]" value="<%= movie.title %>">
       </div>
       <div class="field">
         <label>电影导演</label>
-        <input placeholder="电影导演" type="text" name="movie[doctor]" value="<%= movie.doctor%>">
+        <input id="inputDoctor" placeholder="电影导演" type="text" name="movie[doctor]" value="<%= movie.doctor %>">
       </div>
       <div class="field">
         <label>国家</label>
-        <input placeholder="国家" type="text" name="movie[country]" value="<%= movie.country%>">
+        <input id="inputCountry" placeholder="国家" type="text" name="movie[country]" value="<%= movie.country %>">
       </div>
       <div class="field">
         <label>语种</label>
-        <input placeholder="语种" type="text" name="movie[language]" value="<%= movie.language%>">
+        <input id="inputLanguage" placeholder="语种" type="text" name="movie[language]" value="<%= movie.language %>">
       </div>
       <div class="field">
         <label>海报地址</label>
-        <input placeholder="海报地址" type="text" name="movie[poster]" value="<%= movie.poster%>">
+        <input id="inputPoster" placeholder="海报地址" type="text" name="movie[poster]" value="<%= movie.poster %>">
       </div>
       <div class="field">
         <label>片源地址</label>
-        <input placeholder="片源地址" type="text" name="movie[flash]" value="<%= movie.flash%>">
+        <input id="inputFlash" placeholder="片源地址" type="text" name="movie[flash]" value="<%= movie.flash %>">
+      </div>
+      <div class="field">
+        <label>剧照地址</label>
+        <input id="inputVpic" placeholder="剧照地址" type="text" name="movie[vPic]" value="<%= movie.vPic %>">
       </div>
       <div class="field">
         <label>上映年份</label>
-        <input placeholder="上映年份" type="text" name="movie[year]" value="<%= movie.year%>">
+        <input id="inputYear" placeholder="上映年份" type="text" name="movie[year]" value="<%= movie.year %>">
       </div>
       <div class="field">
         <label>电影简介</label>
-        <input placeholder="电影简介" type="text" name="movie[summary]" value="<%= movie.summary%>">
-      </div>
-      
+        <input id="inputSummary" placeholder="电影简介" type="text" name="movie[summary]" value="<%= movie.summary%>">
+      </div>    
       <input type="submit" class="ui red button fluid" value="录入"> 
     </form>
   </div>
 </div>
-
+<script src="/js/admin.js"></script>
 <%- include('footer')%>

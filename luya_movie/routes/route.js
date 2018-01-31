@@ -1,6 +1,8 @@
 const Index = require('../controllers/index');
 const User = require('../controllers/user');
 const Movie = require('../controllers/movie');
+const Comment = require('../controllers/comment');
+const Category = require('../controllers/category');
 
 module.exports = function (app) {
   // pre handle
@@ -29,7 +31,14 @@ module.exports = function (app) {
   app.get('/admin/movielist', User.loginRequired, User.adminRequired, Movie.movieList);
   app.delete('/admin/movielist', User.loginRequired, User.adminRequired, Movie.delete)
 
+  // Comment
+  app.post('/user/comment', User.loginRequired, Comment.save);
 
+  // Category
+  app.get('/admin/categorynew', User.loginRequired, User.adminRequired, Category.new);
+  app.post('/admin/category', User.loginRequired, User.adminRequired, Category.save);
+  app.get('/admin/categorylist', User.loginRequired, User.adminRequired, Category.categoryList);
+  
 
 
 
