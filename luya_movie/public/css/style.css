@@ -1,26 +1,29 @@
 /* 全局样式 */
-body{
+
+body {
   margin: 20px;
 }
 
 /* 评论 detail.ejs */
-.comments .avator{
+
+.comments .avator {
   height: 30px;
   width: 30px;
   border-radius: 3px;
 }
 
-.comments .avator img{
+.comments .avator img {
   height: 30px;
   width: 30px;
 }
 
-.minimal.comments{
+.minimal.comments {
   margin-top: 60px;
 }
 
 /* 电影面板 index.ejs */
-.movie_panel{
+
+.movie_panel {
   font-weight: bold;
   font-size: 20px;
   color: rgb(63, 61, 63);
@@ -28,4 +31,11 @@ body{
   background: #ccc;
   border-radius: 5px;
   margin: 10px 0;
+}
+
+/* 搜索电影框 */
+
+#searchForm {
+  float: right;
+  margin-top: -45px;
 }
