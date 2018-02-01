@@ -28,19 +28,15 @@
   <% }) %>
 </div>
 <% } %>
-
-<ul class="pagination">
-  <% for(let i=0 ; i < totalPage ; i++){ %>
-    <% if(currentPage == (i+1)) { %>
-      <li>
-        <a class="ui teal circular label"><%= currentPage-1 %></a>
-      </li>
-    <% } else { %>
-      <li>
-        <a href="/results?<%= query %>&p=<%= i %>" class="ui teal circular label"><%= i %></a>
-      </li>
-    <% } %>
+<br>
+<div class="ui pagination menu">
+<% for(let i=0 ; i < totalPage ; i++){ %>
+  <% if(currentPage == (i+1)) { %>
+  <a class="active item"><%= currentPage-1 %></a>
+  <% } else { %>
+  <a href="/results?<%= query %>&p=<%= i %>" class="item"><%= i %></a>
   <% } %>
-</ul>
+<% } %>
+</div>
 
 <%- include footer %>
