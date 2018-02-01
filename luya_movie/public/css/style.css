@@ -3,11 +3,7 @@ body{
   margin: 20px;
 }
 
-li{
-  list-style: none;
-}
-
-/* 评论 */
+/* 评论 detail.ejs */
 .comments .avator{
   height: 30px;
   width: 30px;
@@ -23,7 +19,7 @@ li{
   margin-top: 60px;
 }
 
-/* 电影面板 index.js */
+/* 电影面板 index.ejs */
 .movie_panel{
   font-weight: bold;
   font-size: 20px;
@@ -32,9 +28,4 @@ li{
   background: #ccc;
   border-radius: 5px;
   margin: 10px 0;
-}
-
-/* 页码 */
-.pagination li{
-  display: inline-block;
 }
