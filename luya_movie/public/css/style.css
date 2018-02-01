@@ -3,6 +3,10 @@ body{
   margin: 20px;
 }
 
+li{
+  list-style: none;
+}
+
 /* 评论 */
 .comments .avator{
   height: 30px;
@@ -28,4 +32,9 @@ body{
   background: #ccc;
   border-radius: 5px;
   margin: 10px 0;
+}
+
+/* 页码 */
+.pagination li{
+  display: inline-block;
 }
