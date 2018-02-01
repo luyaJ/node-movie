@@ -2,13 +2,18 @@ const Movie = require('../models/movie'); // 渲染时用到
 const Comment = require('../models/comment');
 const Category = require('../models/category');
 const _ = require('underscore');
+const fs = require('fs'); //读写文件是异步的
+const path = require('path');
 
-// detail (电影信息 & 评论)
+// detail (电影信息 & 评论 & 访客)
 exports.detail = function (req, res) {
   const id = req.params.id;
 
   Movie.findById(id, function (err, movie) {
-
+    // 访客统计
+    Movie.update({_id: id}, {$inc: {pv: 1}}, function(err){
+      console.log(err);
+    });
     // 通过查询电影的id 来查找comment评论
     Comment
       .find({
@@ -53,11 +58,41 @@ exports.update = function (req, res) {
   }
 }
 
+// admin post savePoster
+exports.savePoster = function(req, res, next) {
+  const posterData = req.files.uploadPoster
+  const filePath = posterData.path
+  const originalFilename = posterData.originalFilename
+  // console.log(req.files)
+
+  // 如果有originalFilename，就表示图片传过来了 (文件上传)
+  if (originalFilename) {
+    fs.readFile(filePath, function(err, data) {
+      var timestamp = Date.now();
+      var type = posterData.type.split('/')[1];
+      var poster = timestamp + '.' + type;
+      var newPath = path.join(__dirname, '../', '/public/upload/' + poster);
+
+      fs.writeFile(newPath, data, function(err) {
+        req.poster = poster;
+        next();
+      })
+    })
+  }
+  else {
+    next();
+  }
+}
+
 // admin post 到从后台录入页传来的信息(保存)
 exports.save = function (req, res) {
   const movieObj = req.body.movie;
   const id = movieObj._id;
   let _movie;
+
+  if(req.poster){
+    movieObj.poster = require.poster;
+  }
 
   if (id) {
     Movie.findById(id, function (err, movie) {
