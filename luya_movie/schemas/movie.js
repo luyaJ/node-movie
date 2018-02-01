@@ -16,6 +16,10 @@ const MovieSchema = new Schema({
     type: ObjectId,
     ref: 'Category'
   },
+  pv: {
+    type: Number,
+    default: 0
+  },
   // 创建及更新时间
   meta: {
     createAt: {
