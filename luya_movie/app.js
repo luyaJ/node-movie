@@ -4,6 +4,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const mongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
+const multipart = require('connect-multiparty'); // 处理表单上传文件
 const logger = require('morgan');
 
 const port = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+app.use(multipart());
 // 做持久性会话 登录后刷新页面登录状态依然在
 app.use(session({
 	secret: 'blog',
